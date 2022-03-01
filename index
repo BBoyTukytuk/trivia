@@ -1,1 +1,120 @@
+<!--
+
+document.querySelectorAll('.incorrect')
+NodeList(4) [button.incorrect, button.incorrect, button.incorrect, button.incorrect]
+0: button.incorrect
+1: button.incorrect
+2: button.incorrect
+3: button.incorrect
+
+
+ //Check your answer in a if condition is answer is = to yes if this happens change input answer to green
+                //we have to create a paragraph just like in part 1, inner HTML
+                //else same steps but returns red and incorrect
+
+
+
+
+//                   correct.style.backgroundColor = 'green';
+ //                   message.innerHTML = 'Correct!'; //sets or returns the HTML content (inner HTML) of an element
+
+
+-->
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function()
+            {
+                let correct = document.querySelector('#correct');
+                let message = document.querySelector('#message');
+                let incorrect = document.querySelectorAll('.incorrect');// use a .XXX if it is a class
+                correct.onclick = function()
+                { // we can use the variable correct in place of querySelector
+                    correct.style.backgroundColor = 'green';
+                    message.innerHTML = 'Correct!'; //sets or returns the HTML content (inner HTML) of an element
+                }
+
+                for (let i = 0; i < incorrect.length; i++)
+                { // incorrect.length is the lat element of the list
+                    incorrect[i].onclick = function()
+                    { // we can use the variable correct in place of querySelector
+                        incorrect[i].style.backgroundColor = 'red';
+                        message.innerHTML = 'Inorrect!'; //sets or returns the HTML content (inner HTML) of an element
+
+                    }
+
+                }
+                let submit_answer = document.querySelector('#submit_answer');
+                let answer_message = document.querySelector('#answer_message');
+                submit_answer.addEventListener('click', function()
+                { //attaches a function to run when a key is pressed
+                    let input_answer = document.querySelector('#input_answer'); // Grab the values of what we type
+                    if(input_answer === "yes")
+                    {
+                        input_answer.style.backgroundColor = 'green';
+                        answer_message.innerHTML = 'Correct!';
+                        answer_message.style.backgroundColor = 'green';
+                    }
+                    else{
+                        input_answer.style.backgroundColor = 'red';
+                        answer_message.innerHTML = 'Incorrect!';
+                        answer_message.style.backgroundColor = 'red';
+                    }
+                });
+            }); //Remeber to close all brckets
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+
+                <h3>Which one is A?</h3>
+
+                <button id='correct'>A</button>
+                <button class='incorrect'>B</button>
+                <button class='incorrect'>C</button>
+                <button class='incorrect'>D</button>
+                <button class='incorrect'>E</button>
+
+                <p id= 'message'>  <!-- This message will display after button is pushed -->
+
+
+                </p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Do you enjoy eating?</h3>
+                <form>
+                    <input id= "answer" type = "text" class= "form-control" placeholder="Answer">
+                    <input id= " submit_answer" class="btn btn-primary" type = "submit">
+                </form>
+
+                <p id= 'answer_message'>  <!-- This message will display after button is pushed -->
+
+
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
 
